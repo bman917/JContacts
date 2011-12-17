@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.bman917.jcontacts.models">
+  <class name="ContactEntry" table="Contact">
+    <id column="ContactEntryId" name="id">
+      <generator class="native"/>
+    </id>
+    <property name="lastName"/>
+    <property name="firstName"/>
+    <property name="middleName"/>
+    <property name="birthDay"/>
+    <set cascade="all,delete-orphan" name="emailAddress">
+      <key column="ContactEntryId" not-null="true"/>
+      <one-to-many class="Email"/>
+    </set>
+    <set cascade="all,delete-orphan" name="contactNumbers">
+      <key column="ContactEntryId" not-null="true"/>
+      <one-to-many class="ContactNumber"/>
+    </set>
+    <set cascade="all,delete-orphan" name="address">
+      <key column="ContactEntryId" not-null="true"/>
+      <one-to-many class="Address"/>
+    </set>
+    <set cascade="all-delete-orphan" name="groups" table="ContactGroups">
+      <key column="ContactEntryId"/>
+      <many-to-many class="Group" column="GroupName"/>
+    </set>
+  </class>
+  <class name="Email" table="EmailAddress">
+    <id column="ID" name="id">
+      <generator class="native"/>
+    </id>
+    <property name="email"/>
+    <property name="description"/>
+  </class>
+  <class name="ContactNumber" table="Number">
+    <id column="ID" name="id">
+      <generator class="native"/>
+    </id>
+    <property name="number"/>
+    <property name="description"/>
+  </class>
+  <class name="Address" table="Address">
+    <id column="ID" name="id">
+      <generator class="native"/>
+    </id>
+    <property name="address"/>
+    <property name="description"/>
+  </class>
+  <class name="Group" table="Groups">
+    <id column="GroupName" name="name"/>
+    <property name="description"/>
+    <set cascade="all-delete-orphan" name="ContactEntries" table="ContactGroups">
+      <key column="GroupName"/>
+      <many-to-many class="ContactEntry" column="ContactEntryId"/>
+    </set>
+  </class>
+</hibernate-mapping>

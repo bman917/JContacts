@@ -1,0 +1,28 @@
+<assembly>
+    <id>bin</id>
+    <baseDirectory>.</baseDirectory>
+    <!-- Generates a zip package containing the needed files -->
+    <formats>
+        <format>jar</format>
+    </formats>
+
+    <!-- Adds dependencies to zip package under lib directory -->
+    <dependencySets>
+        <dependencySet>
+            <outputDirectory>.</outputDirectory>
+            <unpack>true</unpack>
+            <useProjectArtifact>true</useProjectArtifact>
+        </dependencySet>
+    </dependencySets>
+
+<!--     <fileSets>
+       adds jar package to the root directory of zip package
+        <fileSet>
+            <directory>target</directory>
+            <outputDirectory></outputDirectory>
+            <includes>
+                <include>*.jar</include>
+            </includes>
+        </fileSet>
+    </fileSets> -->
+</assembly>
