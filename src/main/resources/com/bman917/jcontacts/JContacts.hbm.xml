@@ -9,15 +9,15 @@
     <property name="firstName"/>
     <property name="middleName"/>
     <property name="birthDay"/>
-    <set cascade="all,delete-orphan" name="emailAddress">
+    <set cascade="all-delete-orphan" name="emailAddress">
       <key column="ContactEntryId" not-null="true"/>
       <one-to-many class="Email"/>
     </set>
-    <set cascade="all,delete-orphan" name="contactNumbers">
+    <set cascade="all-delete-orphan" name="contactNumbers">
       <key column="ContactEntryId" not-null="true"/>
       <one-to-many class="ContactNumber"/>
     </set>
-    <set cascade="all,delete-orphan" name="address">
+    <set cascade="all-delete-orphan" name="address">
       <key column="ContactEntryId" not-null="true"/>
       <one-to-many class="Address"/>
     </set>

@@ -31,8 +31,8 @@ public class ContactEntryDataModel extends JDataModel<ContactEntry> {
     @Override
     public String getFeild(ContactEntry genericType, int index) {
         String columName = getColumnName(index);
-        
-        if (genericType == null){
+
+        if (genericType == null) {
             return "";
         }
 
@@ -55,12 +55,12 @@ public class ContactEntryDataModel extends JDataModel<ContactEntry> {
 
     @Override
     public void setField(Object value, ContactEntry genericType, int index) {
-         System.out.println("Setting value to: " + value);
-         
+        System.out.println("Setting value to: " + value);
+
         String columName = getColumnName(index);
         String val = String.valueOf(value);
-        
-       
+
+
 
         if (FIRST_NAME.equals(columName)) {
             genericType.setFirstName(val);
@@ -83,10 +83,12 @@ public class ContactEntryDataModel extends JDataModel<ContactEntry> {
         ce.setFirstName(firstName);
         ce.setLastName(lastName);
         ce.setMiddleName(middleName);
+
         super.addRow(ce);
     }
-    
-    public void addBlankRow(){
+
+    @Override
+    public void addBlankRow() {
         add("","","");
     }
 }

@@ -187,4 +187,8 @@ public class ContactEntry {
             return "";
         }
     }
+    
+    public String toString() {
+        return getFirstName() + getMiddleName() + getLastName() + getEmailAsString() + getAddressAsString() + getContactNumberAsString();
+    }
 }

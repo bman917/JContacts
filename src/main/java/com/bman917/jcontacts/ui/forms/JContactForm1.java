@@ -1,9 +1,11 @@
 package com.bman917.jcontacts.ui.forms;
 
 import com.bman917.jcontacts.ContactEntryDatabaseSv;
+import com.bman917.jcontacts.models.ContactEntry;
 import com.bman917.jcontacts.models.ContactEntryDataModel;
 import com.jchan.jtableutils.ModelUtil;
 import com.jchan.jtableutils.SimpleTableListener;
+import java.awt.event.KeyEvent;
 
 /*
  * To change this template, choose Tools | Templates
@@ -19,24 +21,19 @@ import com.jchan.jtableutils.SimpleTableListener;
  *
  * @author Mr Jacky
  */
-public class JContactForm1 extends javax.swing.JFrame  {
+public class JContactForm1 extends javax.swing.JFrame {
 
     ContactEntryDataModel model;
-    
-    
-    SimpleTableListener listener;
 
     /** Creates new form JContactForm1 */
     public JContactForm1() {
 
         model = new ContactEntryDataModel();
-        
+
         model.addSimpleTableListener();
         model.loadTableData(ContactEntryDatabaseSv.class);
         initComponents();
     }
-
-
 
     /** This method is called from within the constructor to
      * initialize the form.
@@ -122,6 +119,7 @@ public class JContactForm1 extends javax.swing.JFrame  {
      */
     private void jTable1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTable1KeyPressed
         ModelUtil.handlKeyPressedTabEvent(evt, model, jTable1);
+        ModelUtil.handleKeyPressedEscapeEvent(evt, model, jTable1);
     }//GEN-LAST:event_jTable1KeyPressed
 
     /**
@@ -141,5 +139,4 @@ public class JContactForm1 extends javax.swing.JFrame  {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
-
 }
