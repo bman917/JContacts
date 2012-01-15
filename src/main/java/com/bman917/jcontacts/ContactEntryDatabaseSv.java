@@ -17,5 +17,4 @@ public class ContactEntryDatabaseSv extends JBernateSv<ContactEntry> {
     public Class getGenericClass() {
         return ContactEntry.class;
     }
-   
 }

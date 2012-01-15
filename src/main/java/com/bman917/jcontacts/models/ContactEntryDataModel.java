@@ -86,7 +86,7 @@ public class ContactEntryDataModel extends JDataModel<ContactEntry> {
 
         super.addRow(ce);
     }
-
+    
     @Override
     public void addBlankRow() {
         add("","","");

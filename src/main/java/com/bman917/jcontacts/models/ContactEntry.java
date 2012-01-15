@@ -191,4 +191,20 @@ public class ContactEntry {
     public String toString() {
         return getFirstName() + getMiddleName() + getLastName() + getEmailAsString() + getAddressAsString() + getContactNumberAsString();
     }
+    
+    public static ContactEntry create(String firstName, String lastName, String middleName,
+            String commaDelimitedEmail, String commaDelimitedAddress,
+            String commaDelimitedPhoneNumber) {
+        ContactEntry ce = new ContactEntry();
+
+        ce.setFirstName(firstName);
+        ce.setLastName(lastName);
+        ce.setMiddleName(middleName);
+        
+        ce.replaceEmailAddress(commaDelimitedEmail);
+        ce.replaceAddress(commaDelimitedAddress);
+        ce.replaceContactNumber(commaDelimitedPhoneNumber);
+        
+        return ce;
+    }
 }
