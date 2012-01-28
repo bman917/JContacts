@@ -5,6 +5,8 @@
 package com.bman917.jcontacts.models;
 
 import com.jchan.jtableutils.JDataModel;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  *
@@ -12,12 +14,23 @@ import com.jchan.jtableutils.JDataModel;
  */
 public class ContactEntryDataModel extends JDataModel<ContactEntry> {
 
-    static final String FIRST_NAME = "First Name";
-    static final String LAST_NAME = "Last Name";
-    static final String MIDDLE_NAME = "Middle Name";
-    static final String EMAIL = "Email";
-    static final String PHONE = "Phone Number";
-    static final String ADDRESS = "Address";
+    public static final String FIRST_NAME = "First Name";
+    public static final String LAST_NAME = "Last Name";
+    public static final String MIDDLE_NAME = "Middle Name";
+    public static final String EMAIL = "Email";
+    public static final String PHONE = "Phone Number";
+    public static final String ADDRESS = "Address";
+    
+    /** A mapping for the column name to the ContactEntry field name */
+    public static final Map<String, String> columnNameContactFieldMap;
+    
+    static {
+        columnNameContactFieldMap = new HashMap<String, String>();
+        columnNameContactFieldMap.put(FIRST_NAME, "firstName");
+        columnNameContactFieldMap.put(LAST_NAME, "lastName");
+        columnNameContactFieldMap.put(MIDDLE_NAME, "middleName");
+        columnNameContactFieldMap.put(EMAIL, "emailAsString");
+    }
 
     public ContactEntryDataModel() {
         super.addColumName(FIRST_NAME);

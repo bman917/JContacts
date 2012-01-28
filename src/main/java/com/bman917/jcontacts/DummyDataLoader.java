@@ -17,8 +17,7 @@ public class DummyDataLoader {
 
     public static void main(String[] args) throws Exception {
         ContactEntryDatabaseSv sv = new ContactEntryDatabaseSv();
-        //ContactEntry.create("Jacky", "Chan", "Trinidad", "bman917@yahoo.com", "Makati", "8444477");
-
+        
         InputStream is = ClassLoader.getSystemResourceAsStream("Data");
         LineIterator it = IOUtils.lineIterator(is, "UTF-8");
         try {
@@ -38,7 +37,6 @@ public class DummyDataLoader {
                 ContactEntry ce = ContactEntry.create(fName,mName,lName, emails, addrs, phns);
                 System.out.println(ce);
                 sv.save(ce);
-                
             }
         } finally {
             LineIterator.closeQuietly(it);
