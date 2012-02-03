@@ -5,15 +5,14 @@
 package com.bman917.jcontacts;
 
 import com.bman917.jcontacts.models.ContactEntry;
-import com.jchan.jbernate.JBernateSv;
 
 /**
  *
  * @author Mr Jacky
  */
-public class ContactEntryDatabaseSv extends JBernateSv<ContactEntry> {
+public class ContactEntryDatabaseSv {
 
-    @Override
+
     public Class getGenericClass() {
         return ContactEntry.class;
     }

@@ -1,23 +1,36 @@
 package com.bman917.jcontacts.models;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Date;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
 
+@Entity
 public class ContactEntry {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.TABLE)
     private Long id;
     String lastName;
     String firstName;
     String middleName;
+    @Temporal(javax.persistence.TemporalType.DATE)
     Date birthDay;
+    @OneToMany (cascade = CascadeType.ALL)
     Set<Email> emailAddress = new HashSet<Email>();
+    @OneToMany (cascade = CascadeType.ALL)
     Set<Address> address = new HashSet<Address>();
+    @OneToMany (cascade = CascadeType.ALL)
     Set<ContactNumber> contactNumbers = new HashSet<ContactNumber>();
-    List<String> notes = new ArrayList<String>();
+//    @OneToMany
+//    List<String> notes = new ArrayList<String>();
+    @OneToMany (cascade = CascadeType.ALL)
     Set<Group> groups = new HashSet<Group>();
 
     public Long getId() {
@@ -118,14 +131,14 @@ public class ContactEntry {
     public void setContactNumbers(Set<ContactNumber> contactNumber) {
         this.contactNumbers = contactNumber;
     }
-
-    public List<String> getNotes() {
-        return notes;
-    }
-
-    public void setNotes(List<String> notes) {
-        this.notes = notes;
-    }
+//
+//    public List<String> getNotes() {
+//        return notes;
+//    }
+//
+//    public void setNotes(List<String> notes) {
+//        this.notes = notes;
+//    }
 
     public Set<Group> getGroups() {
         return groups;
@@ -187,11 +200,11 @@ public class ContactEntry {
             return "";
         }
     }
-    
+
     public String toString() {
         return getFirstName() + getMiddleName() + getLastName() + getEmailAsString() + getAddressAsString() + getContactNumberAsString();
     }
-    
+
     public static ContactEntry create(String firstName, String lastName, String middleName,
             String commaDelimitedEmail, String commaDelimitedAddress,
             String commaDelimitedPhoneNumber) {
@@ -200,11 +213,11 @@ public class ContactEntry {
         ce.setFirstName(firstName);
         ce.setLastName(lastName);
         ce.setMiddleName(middleName);
-        
+
         ce.replaceEmailAddress(commaDelimitedEmail);
         ce.replaceAddress(commaDelimitedAddress);
         ce.replaceContactNumber(commaDelimitedPhoneNumber);
-        
+
         return ce;
     }
 }

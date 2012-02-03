@@ -10,12 +10,12 @@
  */
 package com.bman917.jcontacts.ui.forms;
 
-import com.bman917.jcontacts.ContactEntryDatabaseSv;
-import com.bman917.jcontacts.models.ContactEntry;
 import com.bman917.jcontacts.models.ContactEntryDataModel;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 import javax.swing.DefaultComboBoxModel;
 
 /**
@@ -108,10 +108,15 @@ public class BasicSearchForm extends javax.swing.JFrame {
         
         basicContactsPanel1.getModel().clear();
         
-        ContactEntryDatabaseSv databaseSv = new ContactEntryDatabaseSv();
-        String fieldName = map.get(jComboBox1.getSelectedItem().toString());
-        List<ContactEntry> list = databaseSv.findBy(fieldName, this.jTextField1.getText());
-        basicContactsPanel1.loadDate(list);
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("JContacts");
+        EntityManager em = emf.createEntityManager();
+        
+        em.createQuery("select c from ContactEntry").getResultList();
+        
+        //ContactEntryDatabaseSv databaseSv = new ContactEntryDatabaseSv();
+        //String fieldName = map.get(jComboBox1.getSelectedItem().toString());
+        //List<ContactEntry> list = databaseSv.findBy(fieldName, this.jTextField1.getText());
+        //basicContactsPanel1.loadDate(list);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
