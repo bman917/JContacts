@@ -4,13 +4,15 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
+//@Table (name = "GRP")
 public class Group {
 
     @Id
     @GeneratedValue(strategy = GenerationType.TABLE)
-    int id;
+    Long id;
     String name;
     String description;
 
@@ -21,11 +23,11 @@ public class Group {
         this.name = name;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

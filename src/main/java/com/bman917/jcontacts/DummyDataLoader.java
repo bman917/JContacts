@@ -31,33 +31,33 @@ public class DummyDataLoader {
             System.out.println("Starting Database Transaction....");
             System.out.println("---------------------------------");
             
-//            em.getTransaction().begin();
-//            while (it.hasNext()) {
-//                String line = it.nextLine();
-//                System.out.println(line);
-//
-//                String[] ent = line.split(",");
-//
-//                String fName = ent[0].trim();
-//                String mName = ent[1].trim();
-//                String lName = ent[2].trim();
-//                String emails = ent[3].trim().replaceAll(";", ",");
-//                String phns = ent[4].trim().replaceAll(";", ",");
-//                String addrs = ent[5].trim().replaceAll(";", ",");
-//
-//                ContactEntry ce = ContactEntry.create(fName, mName, lName, emails, addrs, phns);
-//                System.out.println("Pesisting: " + ce);
-//                em.persist(ce);
-//            }
-//            
-//            System.out.println("Commiting database changes....");
-//            em.getTransaction().commit();
-//            System.out.println("Commiting database changes....Succssful");
+            em.getTransaction().begin();
+            while (it.hasNext()) {
+                String line = it.nextLine();
+                System.out.println(line);
+
+                String[] ent = line.split(",");
+
+                String fName = ent[0].trim();
+                String mName = ent[1].trim();
+                String lName = ent[2].trim();
+                String emails = ent[3].trim().replaceAll(";", ",");
+                String phns = ent[4].trim().replaceAll(";", ",");
+                String addrs = ent[5].trim().replaceAll(";", ",");
+
+                ContactEntry ce = ContactEntry.create(fName, mName, lName, emails, addrs, phns);
+                System.out.println("Pesisting: " + ce);
+                em.persist(ce);
+            }
+            
+            System.out.println("Commiting database changes....");
+            em.getTransaction().commit();
+            System.out.println("Commiting database changes....Succssful");
             
             System.out.println("---------------------------------");
             System.out.println("Retrieving Saved Data....");
-            em.getTransaction().begin();
-            List list = em.createQuery("SELECT c FROM ContactEntry c", ContactEntry.class).getResultList();
+            
+            List<ContactEntry> list = em.createQuery("SELECT c FROM ContactEntry c").getResultList();
             for (Object o : list)
             {
                 System.out.println(o);

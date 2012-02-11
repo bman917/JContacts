@@ -1,11 +1,8 @@
 package com.bman917.jcontacts.ui.forms;
 
-import com.bman917.jcontacts.ContactEntryDatabaseSv;
 import com.bman917.jcontacts.models.ContactEntry;
 import com.bman917.jcontacts.models.ContactEntryDataModel;
 import com.jchan.jtableutils.ModelUtil;
-import com.jchan.jtableutils.SimpleTableListener;
-import java.awt.event.KeyEvent;
 
 /*
  * To change this template, choose Tools | Templates
@@ -30,8 +27,8 @@ public class JContactForm1 extends javax.swing.JFrame {
 
         model = new ContactEntryDataModel();
 
-        model.addSimpleTableListener();
-        model.loadTableData(ContactEntryDatabaseSv.class);
+        model.addSimpleTableListener("Contact");
+        model.loadTableData(ContactEntry.class, "Contact");
         initComponents();
     }
 

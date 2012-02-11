@@ -42,11 +42,6 @@
             <artifactId>JTableUtils</artifactId>
             <version>1.0</version>
         </dependency>
-        <dependency>
-            <groupId>com.jchan</groupId>
-            <artifactId>JModels</artifactId>
-            <version>1.0</version>
-        </dependency>
 <!--        <dependency>
             <groupId>com.jchan</groupId>
             <artifactId>JBernate</artifactId>
@@ -69,6 +64,11 @@
             <version>10.8.2.2</version>
         </dependency>
 
+        <dependency>
+            <groupId>javax.persistence</groupId>
+            <artifactId>persistence-api</artifactId>
+            <version>1.0-rev-1</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -119,12 +119,4 @@
 
         </plugins>
     </build>
-    <repositories>
-        <repository>
-            <url>http://ftp.ing.umu.se/mirror/eclipse/rt/eclipselink/maven.repo</url>
-            <id>eclipselink</id>
-            <layout>default</layout>
-            <name>Repository for library Library[eclipselink]</name>
-        </repository>
-    </repositories>
 </project>
