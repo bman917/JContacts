@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="1.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd">
+  <persistence-unit name="ContactTest" transaction-type="RESOURCE_LOCAL">
+    <provider>org.hibernate.ejb.HibernatePersistence</provider>
+    <class>com.bman917.jcontacts.models.Address</class>
+    <class>com.bman917.jcontacts.models.ContactEntry</class>
+    <class>com.bman917.jcontacts.models.ContactNumber</class>
+    <class>com.bman917.jcontacts.models.Email</class>
+    <class>com.bman917.jcontacts.models.Group</class>
+    <properties>
+      <property name="hibernate.connection.username" value="app"/>
+      <property name="hibernate.connection.driver_class" value="org.apache.derby.jdbc.EmbeddedDriver"/>
+      <property name="hibernate.connection.password" value="app"/>
+      <property name="hibernate.connection.url" value="jdbc:derby:target/test/contact;create=true"/>
+      <property name="hibernate.cache.provider_class" value="org.hibernate.cache.NoCacheProvider"/>
+      <property name="hibernate.hbm2ddl.auto" value="create-drop"/>
+    </properties>
+  </persistence-unit>
+</persistence>
