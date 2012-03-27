@@ -1,5 +1,6 @@
 package com.bman917.jcontacts.models;
 
+import com.jchan.jtableutils.JDataColumn;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -17,20 +18,36 @@ public class ContactEntry {
     @Id
     @GeneratedValue(strategy = GenerationType.TABLE)
     private Long id;
-    String lastName;
+    
+    @JDataColumn(name = "First Name", index = 0)
     String firstName;
+    
+    @JDataColumn(name = "Middle Name", index = 1)
     String middleName;
-    @Temporal(javax.persistence.TemporalType.DATE)
-    Date birthDay;
-    @OneToMany (cascade = CascadeType.ALL)
+    
+    @JDataColumn(name = "Last Name", index = 2)
+    String lastName;
+    
+    @OneToMany(cascade = CascadeType.ALL)
+    @JDataColumn(name = "Email", index = 3)
     Set<Email> emailAddress = new HashSet<Email>();
-    @OneToMany (cascade = CascadeType.ALL)
-    Set<Address> address = new HashSet<Address>();
-    @OneToMany (cascade = CascadeType.ALL)
+    
+    @OneToMany(cascade = CascadeType.ALL)
+    @JDataColumn(name = "Phone Number", index = 4)
     Set<ContactNumber> contactNumbers = new HashSet<ContactNumber>();
+    
+    @Temporal(javax.persistence.TemporalType.DATE)
+    @JDataColumn(hidden=true)
+    Date birthDay;
+    
+    @OneToMany(cascade = CascadeType.ALL)
+    @JDataColumn(name = "Address")
+    Set<Address> address = new HashSet<Address>();
 //    @OneToMany
 //    List<String> notes = new ArrayList<String>();
-    @OneToMany (cascade = CascadeType.ALL)
+    
+    @OneToMany(cascade = CascadeType.ALL)
+    @JDataColumn(hidden=true)
     Set<Group> groups = new HashSet<Group>();
 
     public Long getId() {

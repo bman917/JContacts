@@ -33,12 +33,7 @@ public class ContactEntryDataModel extends JDataModel<ContactEntry> {
     }
 
     public ContactEntryDataModel() {
-        super.addColumName(FIRST_NAME);
-        super.addColumName(LAST_NAME);
-        super.addColumName(MIDDLE_NAME);
-        super.addColumName(EMAIL);
-        super.addColumName(PHONE);
-        super.addColumName(ADDRESS);
+        super(ContactEntry.class);
     }
 
     @Override
@@ -49,21 +44,15 @@ public class ContactEntryDataModel extends JDataModel<ContactEntry> {
             return "";
         }
 
-        if (FIRST_NAME.equals(columName)) {
-            return genericType.getFirstName();
-        } else if (LAST_NAME.equals(columName)) {
-            return genericType.getLastName();
-        } else if (MIDDLE_NAME.equals(columName)) {
-            return genericType.getMiddleName();
-        } else if (EMAIL.equals(columName)) {
+        if (EMAIL.equals(columName)) {
             return genericType.getEmailAsString();
         } else if (PHONE.equals(columName)) {
             return genericType.getContactNumberAsString();
         } else if (ADDRESS.equals(columName)) {
             return genericType.getAddressAsString();
+        } else {
+            return super.getFeild(genericType, index);
         }
-
-        throw new IllegalArgumentException("Unknown colum index: " + index);
     }
 
     @Override
@@ -73,20 +62,14 @@ public class ContactEntryDataModel extends JDataModel<ContactEntry> {
         String columName = getColumnName(index);
         String val = String.valueOf(value);
 
-
-
-        if (FIRST_NAME.equals(columName)) {
-            genericType.setFirstName(val);
-        } else if (LAST_NAME.equals(columName)) {
-            genericType.setLastName(val);
-        } else if (MIDDLE_NAME.equals(columName)) {
-            genericType.setMiddleName(val);
-        } else if (EMAIL.equals(columName)) {
+        if (EMAIL.equals(columName)) {
             genericType.replaceEmailAddress(val);
         } else if (PHONE.equals(columName)) {
             genericType.replaceContactNumber(val);
         } else if (ADDRESS.equals(columName)) {
             genericType.replaceAddress(val);
+        } else {
+            super.setField(value, genericType, index);
         }
     }
 
